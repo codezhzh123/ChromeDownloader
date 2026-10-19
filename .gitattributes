@@ -1,0 +1,22 @@
+# Line ending policy for every platform.
+#
+# Text files are normalised to LF inside the repository and are also checked out
+# with LF, so a Windows and a macOS worktree are byte for byte identical and no
+# line-ending-only differences can ever show up in a diff. This overrides the
+# local core.autocrlf setting, which would otherwise store LF on Windows but
+# CRLF on macOS.
+* text=auto eol=lf
+
+# Windows batch files must keep CRLF, otherwise cmd.exe rejects them.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Shell scripts must keep LF, otherwise they fail with a stray '\r'.
+*.sh text eol=lf
+
+# Binary assets must never be converted.
+*.png  binary
+*.ico  binary
+*.icns binary
+*.jar  binary
+*.class binary
